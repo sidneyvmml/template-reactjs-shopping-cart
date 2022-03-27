@@ -45,6 +45,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
       if (amount > stockAmount) {
         toast.error('Quantidade solicitada fora de estoque');
+        return;
       }
       
       if (productExists) {
@@ -76,6 +77,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
       if (productIndex >= 0) {
         updatedCart.splice(productIndex, 1);
+        setCart(updatedCart);
         localStorage.setItem('@RocketShoes:cart', JSON.stringify(updatedCart))
       } else {
         throw Error();
